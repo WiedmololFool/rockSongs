@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/fragment_head"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/headerLabel"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerLayout"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:id="@+id/addNameLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Песня:"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/addName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/addNameLabel"
+            android:layout_toRightOf="@id/addNameLabel"
+            android:hint="*Введите название песни"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/addAuthorLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addNameLabel"
+            android:text="Автор:"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/addAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/addAuthorLabel"
+            android:layout_toRightOf="@id/addAuthorLabel"
+            android:hint="*Введите автора"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/addAlbumLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addAuthorLabel"
+            android:text="Альбом:"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/addAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/addAlbumLabel"
+            android:layout_toRightOf="@id/addAlbumLabel"
+            android:hint="*Введите альбом"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/addYearLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addAlbumLabel"
+            android:text="Год:"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/addYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/addYearLabel"
+            android:layout_toRightOf="@id/addYearLabel"
+            android:hint="*Введите год"
+            android:inputType="number"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/addDescriptionLabel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addYearLabel"
+            android:text="Описание:"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/addDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/addDescriptionLabel"
+            android:layout_toRightOf="@id/addDescriptionLabel"
+            android:hint="Введите описание" />
+
+    </RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/btnLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/fieldLayout"
+    >
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/deleteButton"
+        android:layout_margin="10sp"
+        android:textStyle="bold"
+        />
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Удалить"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/saveButton"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="10sp"
+        android:textStyle="bold"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

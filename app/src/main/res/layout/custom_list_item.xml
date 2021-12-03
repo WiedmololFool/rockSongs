@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="2dp"
+    >
+
+    <TextView
+        android:id="@+id/tvSongName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Песня"
+        android:textStyle="bold"
+        android:textAppearance="?attr/textAppearanceListItem"
+    />
+
+    <TextView
+        android:id="@+id/tvSongAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Автор"
+        android:textColor="@color/gray"
+        android:layout_below="@id/tvSongName"
+        android:textAppearance="?attr/textAppearanceListItemSecondary"
+        android:layout_alignStart="@id/tvSongName"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tvSongAlbum"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="Альбом"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/tvSongName"
+        android:layout_alignBaseline="@id/tvSongName"
+        android:textAppearance="?attr/textAppearanceListItem"
+
+        />
+
+    <TextView
+        android:id="@+id/tvSongYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/tvSongAlbum"
+        android:layout_alignBaseline="@id/tvSongName"
+        android:textAppearance="?attr/textAppearanceListItem"
+        />
+
+</RelativeLayout>
