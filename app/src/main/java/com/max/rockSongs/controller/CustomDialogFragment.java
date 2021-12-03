@@ -1,6 +1,5 @@
 package com.max.rockSongs.controller;
 
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;

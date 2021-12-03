@@ -1,15 +1,9 @@
 package com.max.rockSongs.controller;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import android.os.Bundle;
-
-
 import com.max.rockSongs.R;
-
 
 public class MainActivity extends AppCompatActivity
 {

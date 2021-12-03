@@ -5,11 +5,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.max.rockSongs.model.Album;
 import com.max.rockSongs.model.Author;
 import com.max.rockSongs.model.Song;
-
 import java.util.ArrayList;
 import java.util.List;
 

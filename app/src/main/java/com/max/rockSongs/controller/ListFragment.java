@@ -1,9 +1,7 @@
 package com.max.rockSongs.controller;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,7 +15,6 @@ import android.widget.ListView;
 import com.max.rockSongs.R;
 import com.max.rockSongs.database.DatabaseAdapter;
 import com.max.rockSongs.model.Song;
-
 import java.util.List;
 
 
@@ -39,7 +36,6 @@ public class ListFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -55,7 +51,6 @@ public class ListFragment extends Fragment
         authorFilter = view.findViewById(R.id.authorFilter);
         albumFilter = view.findViewById(R.id.albumFilter);
         yearFilter = view.findViewById(R.id.yearFilter);
-
 
         songsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
         {
