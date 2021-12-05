@@ -1,5 +1,30 @@
 <resources>
     <string name="app_name">Rock Songs</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="row_song">Песня</string>
+    <string name="row_author">Автор</string>
+    <string name="row_album">Альбом</string>
+    <string name="row_data">Дата</string>
+    <string name="header_song">Песня</string>
+    <string name="header_album">Альбом</string>
+    <string name="header_data">Дата</string>
+    <string name="search_label">&#160;&#160;Поиск</string>
+    <string name="name_filter_hint">Название</string>
+    <string name="author_filter_hint">Автор</string>
+    <string name="album_filter_hint">Альбом</string>
+    <string name="data_filter_hint">Дата</string>
+    <string name="clear_fields_btn">Очистить поля</string>
+    <string name="add_song_btn">Добавить песню</string>
+    <string name="add_name_label">Песня:</string>
+    <string name="add_name_hint">*Введите название песни</string>
+    <string name="add_author_label">Автор:</string>
+    <string name="add_author_hint">*Введите автора</string>
+    <string name="add_album_label">Альбом:</string>
+    <string name="add_album_hint">*Введите альбом</string>
+    <string name="add_year_label">Год:</string>
+    <string name="add_year_hint">*Введите год</string>
+    <string name="add_description_label">Описание:</string>
+    <string name="add_description_hint">Введите описание</string>
+    <string name="save_button">Сохранить</string>
+    <string name="delete_button">Удалить</string>
+    <string name="add_song_field_validation">Пожалуйста, заполните все поля, отмеченные \' * \'</string>
 </resources>

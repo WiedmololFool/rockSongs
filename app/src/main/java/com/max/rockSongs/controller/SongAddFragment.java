@@ -3,8 +3,6 @@ package com.max.rockSongs.controller;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,7 +111,7 @@ public class SongAddFragment extends Fragment
                     goHome(listFragment);
                     } else
                     {
-                        Toast toast =  Toast.makeText(getContext(),"Пожалуйста, заполните все поля, отмеченные ' * '",Toast.LENGTH_LONG);
+                        Toast toast =  Toast.makeText(getContext(), R.string.add_song_field_validation,Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }

@@ -19,9 +19,9 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:text="Песня"
+        android:text="@string/header_song"
         android:textColor="@color/white"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
         android:layout_gravity="center"
@@ -31,9 +31,9 @@
         android:id="@+id/tvAlbumLabel"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="Альбом"
+        android:text="@string/header_album"
         android:layout_gravity="center"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
@@ -43,9 +43,9 @@
         android:id="@+id/tvYearLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Дата"
+        android:text="@string/header_data"
         android:layout_gravity="center"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceListItem"
@@ -69,14 +69,14 @@
             android:id="@+id/searchLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="  Поиск"
-            android:textSize="20dp"
-            android:drawableLeft="@drawable/mysearch"
-            android:layout_above="@id/linMain"
+            android:text="@string/search_label"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/search_icon"
+            android:layout_above="@id/bottomLayout"
             />
     <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/linMain"
+        android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
@@ -84,7 +84,7 @@
 
         >
         <LinearLayout
-            android:id="@+id/lin1"
+            android:id="@+id/filterLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -92,42 +92,31 @@
             android:layout_marginHorizontal="10dp"
             >
             <EditText
-
                 android:id="@+id/nameFilter"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:hint="Название"
+                android:hint="@string/name_filter_hint"
                 android:singleLine="true"
-                android:layout_below="@id/songsList"
                 />
             <EditText
-
                 android:id="@+id/authorFilter"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:hint="Автор"
-                android:layout_toRightOf="@id/nameFilter"
-                android:layout_below="@id/songsList"
+                android:hint="@string/author_filter_hint"
                 android:singleLine="true"
                 />
             <EditText
-
                 android:id="@+id/albumFilter"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:hint="Альбом"
-                android:layout_below="@id/songsList"
-                android:layout_toRightOf="@id/authorFilter"
+                android:hint="@string/album_filter_hint"
                 android:singleLine="true"
                 />
             <EditText
-
                 android:id="@+id/yearFilter"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:hint="Дата"
-                android:layout_toRightOf="@id/albumFilter"
-                android:layout_below="@id/songsList"
+                android:hint="@string/data_filter_hint"
                 android:inputType="number"
                 android:singleLine="true"
                 />
@@ -135,7 +124,7 @@
 
         </LinearLayout>
        <LinearLayout
-           android:id="@+id/lin2"
+           android:id="@+id/buttonLayout"
            android:orientation="horizontal"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -146,7 +135,7 @@
                android:id="@+id/btnClearFilter"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="Очистить поля"
+               android:text="@string/clear_fields_btn"
                android:textStyle="bold"
                android:layout_gravity="start"
                android:layout_marginLeft="10dp"
@@ -155,7 +144,7 @@
                android:id="@+id/btnAddSong"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="Добавить песню"
+               android:text="@string/add_song_btn"
                android:textStyle="bold"
                android:layout_gravity="end"
                android:layout_marginStart="10sp"
