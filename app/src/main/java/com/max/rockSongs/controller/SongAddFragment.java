@@ -66,7 +66,7 @@ public class SongAddFragment extends Fragment
         // если 0, то добавление
         if (songId > 0)
         {
-            headerLabel.setText("Редактирование песни");
+            headerLabel.setText(R.string.header_edit_song);
             // получаем элемент по id из бд
             dbAdapter.open();
             Song song = dbAdapter.getSong(songId);
@@ -79,7 +79,7 @@ public class SongAddFragment extends Fragment
         } else
         {
             // скрываем кнопку удаления
-            headerLabel.setText("Добавление песни");
+            headerLabel.setText(R.string.header_add_song);
             delButton.setVisibility(View.GONE);
         }
 
