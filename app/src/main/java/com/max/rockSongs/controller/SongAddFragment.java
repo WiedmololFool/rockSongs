@@ -104,7 +104,7 @@ public class SongAddFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                if (!nameBox.getText().toString().equals("") && !authorBox.getText().toString().equals("") && !(yearBox.getText().toString().equals("")) && !albumBox.toString().equals(""))
+                if (!nameBox.getText().toString().equals("") && !authorBox.getText().toString().equals("") && !(yearBox.getText().toString().equals("")) && !albumBox.getText().toString().equals(""))
                 {
                     String name = nameBox.getText().toString();
                     String authorName = authorBox.getText().toString();
