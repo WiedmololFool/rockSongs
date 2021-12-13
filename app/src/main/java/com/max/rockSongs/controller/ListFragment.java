@@ -1,5 +1,6 @@
 package com.max.rockSongs.controller;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.text.Editable;
@@ -31,11 +32,14 @@ public class ListFragment extends Fragment
     private Button btnAddSong, btnClearFilter;
     private EditText nameFilter, authorFilter, albumFilter, yearFilter;
     private static final String TAG = "MyApp";
+    private DatabaseAdapter dbAdapter;
+    private List <Song> songs;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Override
@@ -110,105 +114,73 @@ public class ListFragment extends Fragment
                 yearFilter.setText("");
             }
         });
+
+        nameFilter.addTextChangedListener(new GenericTextWatcher());
+        authorFilter.addTextChangedListener(new GenericTextWatcher());
+        albumFilter.addTextChangedListener(new GenericTextWatcher());
+        yearFilter.addTextChangedListener(new GenericTextWatcher());
+
         return view;
     }
 
     @Override
     public void onResume()
     {
+        Log.d("OnResumeListFragment","ListFragment is Resuming");
         super.onResume();
-        DatabaseAdapter dbAdapter = new DatabaseAdapter(getContext());
-        dbAdapter.open();
-        List <Song> songs = dbAdapter.getSongs();
+        DBAdapterTask dbAdapterTask = new DBAdapterTask();
+        dbAdapterTask.execute();
 
-        songAdapter = new SongAdapter(getContext(), R.layout.custom_list_item, songs );
-
-        songsList.setAdapter(songAdapter);
-        dbAdapter.close();
-
-
-        nameFilter.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-                songAdapter.filterName(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
-
-            }
-        });
-
-        authorFilter.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-                songAdapter.filterAuthor(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
-
-            }
-        });
-
-        albumFilter.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-                songAdapter.filterAlbum(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
-
-            }
-        });
-
-        yearFilter.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
-            {
-                songAdapter.filterYear(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable)
-            {
-
-            }
-        });
     }
+
+    private class DBAdapterTask extends AsyncTask <Void, Void, Void>
+    {
+
+        @Override
+        protected Void doInBackground(Void... voids)
+        {
+            Log.d("DBAdapterTask","doInBackground");
+            dbAdapter = new DatabaseAdapter(getContext());
+            dbAdapter.open();
+            songs = dbAdapter.getSongs();
+
+            dbAdapter.close();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused)
+        {
+            super.onPostExecute(unused);
+            songAdapter = new SongAdapter(getContext(), R.layout.custom_list_item, songs );
+            songsList.setAdapter(songAdapter);
+        }
+    }
+
+    private class GenericTextWatcher implements TextWatcher
+    {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+        {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+        {
+            songAdapter.filter(nameFilter.getText().toString(),
+                    authorFilter.getText().toString(),
+                    albumFilter.getText().toString(),
+                    yearFilter.getText().toString());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable)
+        {
+
+        }
+    }
+
+
 }

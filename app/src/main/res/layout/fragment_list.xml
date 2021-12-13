@@ -123,7 +123,7 @@
 
 
         </LinearLayout>
-       <LinearLayout
+       <androidx.constraintlayout.widget.ConstraintLayout
            android:id="@+id/buttonLayout"
            android:orientation="horizontal"
            android:layout_width="match_parent"
@@ -138,7 +138,11 @@
                android:text="@string/clear_fields_btn"
                android:textStyle="bold"
                android:layout_gravity="start"
-               android:layout_marginLeft="10dp"
+               app:layout_constraintHorizontal_weight="1"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintRight_toLeftOf="@+id/btnAddSong"
+               android:layout_margin="10sp"
                />
            <Button
                android:id="@+id/btnAddSong"
@@ -146,9 +150,12 @@
                android:layout_height="wrap_content"
                android:text="@string/add_song_btn"
                android:textStyle="bold"
-               android:layout_gravity="end"
-               android:layout_marginStart="10sp"
+               app:layout_constraintHorizontal_weight="1"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toRightOf="@+id/btnClearFilter"
+               app:layout_constraintRight_toRightOf="parent"
+               android:layout_margin="10sp"
                />
-       </LinearLayout>
+       </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </RelativeLayout>

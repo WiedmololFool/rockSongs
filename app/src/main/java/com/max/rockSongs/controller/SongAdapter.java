@@ -1,12 +1,15 @@
 package com.max.rockSongs.controller;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import com.max.rockSongs.R;
 import com.max.rockSongs.model.Song;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ public class SongAdapter extends ArrayAdapter<Song> //implements Filterable
     private int layout;
     private List<Song> songList;
     private List<Song> originalSongList;
+    private List<Song> tempSongList;
 
     public SongAdapter(Context context, int resource, List<Song> songs)
     {
@@ -25,6 +29,9 @@ public class SongAdapter extends ArrayAdapter<Song> //implements Filterable
         this.inflater = LayoutInflater.from(context);
         originalSongList = new ArrayList<>();
         this.originalSongList.addAll(songList);
+        tempSongList = new ArrayList<>();
+        this.tempSongList.addAll(songList);
+
     }
 
     public View getView(int position, View convertView, ViewGroup parent)
@@ -45,65 +52,43 @@ public class SongAdapter extends ArrayAdapter<Song> //implements Filterable
         return view;
     }
 
-    public void filterName(String charText) {
-        charText = charText.toLowerCase();
+    public void filter(String charName, String charAuthor, String charAlbum, String charYear)
+    {
+        charName = charName.toLowerCase();
+        charAuthor = charAuthor.toLowerCase();
+        charAlbum = charAlbum.toLowerCase();
+        charYear = charYear.toLowerCase();
+
         songList.clear();
-        if (charText.length() == 0) {
-            songList.addAll(originalSongList);
-        } else {
-            for (Song song : originalSongList) {
-                if(song.getName().toLowerCase().contains(charText)){
+        if (charName.length() == 0)
+        {
+            charName = "";
+        }
+        if (charAuthor.length() == 0)
+        {
+            charAuthor = "";
+        }
+        if (charAlbum.length() == 0)
+        {
+            charAlbum = "";
+        }
+        if (charYear.length() == 0)
+        {
+            charYear = "";
+        }
+        {
+            for (Song song : originalSongList)
+            {
+                if (song.getName().toLowerCase().contains(charName) &&
+                        song.getAlbum().getAuthor().getName().toLowerCase().contains(charAuthor) &&
+                        song.getAlbum().getName().toLowerCase().contains(charAlbum) &&
+                        String.valueOf(song.getAlbum().getYear()).toLowerCase().contains(charYear))
+                {
                     songList.add(song);
                 }
             }
         }
         notifyDataSetChanged();
     }
-
-    public void filterAuthor(String charText) {
-        charText = charText.toLowerCase();
-        songList.clear();
-        if (charText.length() == 0) {
-            songList.addAll(originalSongList);
-        } else {
-            for (Song song : originalSongList) {
-                if(song.getAlbum().getAuthor().getName().toLowerCase().contains(charText)){
-                    songList.add(song);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
-
-    public void filterAlbum(String charText) {
-        charText = charText.toLowerCase();
-        songList.clear();
-        if (charText.length() == 0) {
-            songList.addAll(originalSongList);
-        } else {
-            for (Song song : originalSongList) {
-                if(song.getAlbum().getName().toLowerCase().contains(charText)){
-                    songList.add(song);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
-
-    public void filterYear(String charText) {
-        charText = charText.toLowerCase();
-        songList.clear();
-        if (charText.length() == 0) {
-            songList.addAll(originalSongList);
-        } else {
-            for (Song song : originalSongList) {
-                if( String.valueOf(song.getAlbum().getYear()).toLowerCase().contains(charText)){
-                    songList.add(song);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
-
 }
 

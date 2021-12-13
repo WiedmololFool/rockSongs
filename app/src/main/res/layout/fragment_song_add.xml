@@ -23,11 +23,23 @@
             />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_below="@id/headerLayout"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
     <RelativeLayout
         android:id="@+id/fieldLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/headerLayout"
+
         android:layout_margin="10dp"
         >
 
@@ -157,5 +169,6 @@
         android:textStyle="bold"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
