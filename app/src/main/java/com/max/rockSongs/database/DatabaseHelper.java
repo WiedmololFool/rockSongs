@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper
 {
     private static final String DB_NAME = "rockSongsDB";
-    private static int DB_SHEMA = 1;
+    private static int DB_VERSION = 1;
     static final String TABLE = "songs";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public DatabaseHelper(Context context)
     {
-        super(context,DB_NAME, null, DB_SHEMA);
+        super(context,DB_NAME, null, DB_VERSION);
     }
 
     @Override
@@ -34,11 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 + COLUMN_DESCRIPTION + " TEXT, "
                 + COLUMN_IS_ARCHIVED + " INTEGER DEFAULT 0);");
         // добавление начальных данных
-        db.execSQL("INSERT INTO "+ TABLE +" (" + COLUMN_NAME
-                + ", " + COLUMN_AUTHOR  + ", " + COLUMN_ALBUM +
-                ", " + COLUMN_YEAR + ", " + COLUMN_DESCRIPTION + " ) " +
-                "VALUES ('RockIT','Слонев Максим','КНТ-519', 2021," +
-                " 'Эта песня была написана студентом группы КНТ-519');");
+        insertInitialValues(db);
     }
 
     @Override
@@ -48,5 +44,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
         {
 
         }
+    }
+
+    public void insertInitialValues(SQLiteDatabase db)
+    {
+        db.execSQL("INSERT INTO "+ TABLE +" (" + COLUMN_NAME
+                + ", " + COLUMN_AUTHOR  + ", " + COLUMN_ALBUM +
+                ", " + COLUMN_YEAR + ", " + COLUMN_DESCRIPTION + " ) " +
+                "VALUES ('RockIT','Слонев Максим','КНТ-519', 2021," +
+                " 'Эта песня была написана студентом группы КНТ-519');");
     }
 }
