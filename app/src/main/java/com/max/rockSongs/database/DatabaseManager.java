@@ -5,23 +5,25 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.max.rockSongs.model.Album;
 import com.max.rockSongs.model.Author;
 import com.max.rockSongs.model.Song;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseAdapter
+public class DatabaseManager
 {
     private DatabaseHelper dbHelper;
     private SQLiteDatabase database;
 
-    public DatabaseAdapter(Context context)
+    public DatabaseManager(Context context)
     {
         dbHelper = new DatabaseHelper(context.getApplicationContext());
     }
 
-    public DatabaseAdapter open()
+    public DatabaseManager open()
     {
         database = dbHelper.getWritableDatabase();
         return this;
@@ -99,8 +101,8 @@ public class DatabaseAdapter
         return database.update(DatabaseHelper.TABLE, cv, whereClause, whereArgs);
     }
 
-    public long update(Song song){
-
+    public long update(Song song)
+    {
         String whereClause = DatabaseHelper.COLUMN_ID + "=" + song.getId();
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.COLUMN_NAME, song.getName());

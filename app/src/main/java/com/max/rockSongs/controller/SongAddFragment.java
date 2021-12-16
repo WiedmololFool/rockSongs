@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.max.rockSongs.R;
-import com.max.rockSongs.database.DatabaseAdapter;
+import com.max.rockSongs.database.DatabaseManager;
 import com.max.rockSongs.model.Album;
 import com.max.rockSongs.model.Author;
 import com.max.rockSongs.model.Song;
@@ -26,9 +26,8 @@ public class SongAddFragment extends Fragment
 {
     private EditText nameBox, authorBox, albumBox, yearBox, descriptionBox;
     private Button saveButton, delButton;
-    private DatabaseAdapter dbAdapter;
+    private DatabaseManager dbManager;
     private TextView headerLabel;
-
     private long songId = 0;
 
     public SongAddFragment()
@@ -58,7 +57,7 @@ public class SongAddFragment extends Fragment
         saveButton = view.findViewById(R.id.saveButton);
         delButton = view.findViewById(R.id.deleteButton);
         headerLabel = view.findViewById(R.id.headerLabel);
-        dbAdapter = new DatabaseAdapter(getContext());
+        dbManager = new DatabaseManager(getContext());
 
         Bundle args = getArguments();
 
@@ -151,9 +150,9 @@ public class SongAddFragment extends Fragment
         @Override
         protected Song doInBackground(Void... voids)
         {
-            dbAdapter.open();
-            Song song = dbAdapter.getSong(songId);
-            dbAdapter.close();
+            dbManager.open();
+            Song song = dbManager.getSong(songId);
+            dbManager.close();
             return song;
         }
 
@@ -175,18 +174,15 @@ public class SongAddFragment extends Fragment
         @Override
         protected Void doInBackground(Song... songs)
         {
-            Log.d("Task", song.toString());
-            dbAdapter.open();
-
+            dbManager.open();
             if (songId > 0)
             {
-                dbAdapter.update(song);
+                dbManager.update(song);
             } else
             {
-                dbAdapter.insert(song);
+                dbManager.insert(song);
             }
-            dbAdapter.close();
-
+            dbManager.close();
             return null;
         }
     }
@@ -198,9 +194,9 @@ public class SongAddFragment extends Fragment
         protected Void doInBackground(Void... voids)
         {
             Log.d("Task","Delete song with ID = "+songId);
-            dbAdapter.open();
-            dbAdapter.delete(songId);
-            dbAdapter.close();
+            dbManager.open();
+            dbManager.delete(songId);
+            dbManager.close();
             return null;
         }
 

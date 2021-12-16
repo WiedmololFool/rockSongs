@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.max.rockSongs.R;
-import com.max.rockSongs.database.DatabaseAdapter;
+import com.max.rockSongs.database.DatabaseManager;
 import com.max.rockSongs.model.Song;
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class ListFragment extends Fragment
     private Button btnAddSong, btnClearFilter;
     private EditText nameFilter, authorFilter, albumFilter, yearFilter;
     private static final String TAG = "MyApp";
-    private DatabaseAdapter dbAdapter;
+    private DatabaseManager dbManager;
     private List <Song> songs;
 
     @Override
@@ -128,23 +128,22 @@ public class ListFragment extends Fragment
     {
         Log.d("OnResumeListFragment","ListFragment is Resuming");
         super.onResume();
-        DBAdapterTask dbAdapterTask = new DBAdapterTask();
-        dbAdapterTask.execute();
+        DBManagerTask dbManagerTask = new DBManagerTask();
+        dbManagerTask.execute();
 
     }
 
-    private class DBAdapterTask extends AsyncTask <Void, Void, Void>
+    private class DBManagerTask extends AsyncTask <Void, Void, Void>
     {
 
         @Override
         protected Void doInBackground(Void... voids)
         {
-            Log.d("DBAdapterTask","doInBackground");
-            dbAdapter = new DatabaseAdapter(getContext());
-            dbAdapter.open();
-            songs = dbAdapter.getSongs();
-
-            dbAdapter.close();
+            Log.d("DBManagerTask","doInBackground");
+            dbManager = new DatabaseManager(getContext());
+            dbManager.open();
+            songs = dbManager.getSongs();
+            dbManager.close();
             return null;
         }
 
@@ -159,7 +158,6 @@ public class ListFragment extends Fragment
 
     private class GenericTextWatcher implements TextWatcher
     {
-
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
         {
